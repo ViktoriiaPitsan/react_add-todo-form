@@ -2,6 +2,7 @@ import './App.scss';
 
 import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
+import { createTodoAggregates, TodoAggregate } from './domain/TodoAggregate';
 import { TodoList } from './components/TodoList';
 import { AddTodoForm } from './components/AddTodoForm';
 import { useState } from 'react';
@@ -22,7 +23,10 @@ export const App = () => {
     ]);
   };
 
-  const aggregatedTodos = createTodoAggregates(todos, usersFromServer);
+  const aggregatedTodos: TodoAggregate[] = createTodoAggregates(
+    todos,
+    usersFromServer,
+  );
 
   return (
     <div className="App">
