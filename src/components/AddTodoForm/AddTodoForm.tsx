@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Nullable } from '../../domain/Nullable';
-import users from '../../api/users';
 import { Todo } from '../../domain/Todo';
 
 type AddTodoFormProps = {
   onSubmit: (todo: Omit<Todo, 'id'>) => void;
+  users: { id: number; name: string }[];
 };
 
-export const AddTodoForm = ({ onSubmit }: AddTodoFormProps) => {
+export const AddTodoForm = ({ onSubmit, users }: AddTodoFormProps) => {
   const [title, setTitle] = useState('');
   const [titleError, setTitleError] = useState<Nullable<string>>(null);
 
@@ -67,6 +67,7 @@ export const AddTodoForm = ({ onSubmit }: AddTodoFormProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
+        <label htmlFor="title">Title: </label>
         <input
           type="text"
           data-cy="titleInput"
@@ -78,6 +79,7 @@ export const AddTodoForm = ({ onSubmit }: AddTodoFormProps) => {
       </div>
 
       <div className="field">
+        <label htmlFor="user">User: </label>
         <select
           data-cy="userSelect"
           value={ownerId}
