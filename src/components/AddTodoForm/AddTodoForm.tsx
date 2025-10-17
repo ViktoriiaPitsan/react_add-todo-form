@@ -70,6 +70,7 @@ export const AddTodoForm = ({ onSubmit, users }: AddTodoFormProps) => {
         <label htmlFor="title">Title: </label>
         <input
           type="text"
+          id="title"
           data-cy="titleInput"
           value={title}
           onChange={handleTitleChange}
@@ -81,11 +82,12 @@ export const AddTodoForm = ({ onSubmit, users }: AddTodoFormProps) => {
       <div className="field">
         <label htmlFor="user">User: </label>
         <select
+          id="user"
           data-cy="userSelect"
           value={ownerId}
           onChange={handleUserChange}
         >
-          <option value="0" disabled>
+          <option value={0} disabled>
             Choose a user
           </option>
 
